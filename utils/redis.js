@@ -7,6 +7,11 @@ var redis = require('redis'),
 
 var client = redis.createClient(port, host); //port, host, opts
 
+if (settings.redis.pwd.length > 0) {
+    client.auth(settings.redis.pwd, function() {
+        console.log('redis_save 通过认证');
+    });
+}
 client.on("ready", function (res) {
     console.log('ready');
 });
