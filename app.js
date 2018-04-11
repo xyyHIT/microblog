@@ -8,6 +8,10 @@ var logger = require('morgan');
 // 数据库设置
 var settings = require('./settings');
 
+var log4js = require('log4js');
+log4js.configure(settings.log4js);
+var log = log4js.getLogger(__filename);
+
 // connect-mongo: MongoDB session store for Express
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -21,6 +25,7 @@ var companyRouter = require('./routes/company');
 
 var app = express();
 
+log.info('start....');
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // 页面模板的位置
 app.set('view engine', 'ejs'); // 设置模板引擎

@@ -5,5 +5,15 @@ module.exports = {
         port: 6379,
         host: '127.0.0.1',
         pwd: 'crs-lodfe5ga:TFH2016yijia'
+    },
+    log4js: {
+        appenders: [
+            { type: 'console' },
+            {
+                type: 'file',
+                filename: 'logs/access.log',
+                maxLogSize: 1024 * 1024,
+                backups: 3
+            }]
     }
 }
