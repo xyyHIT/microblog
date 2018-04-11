@@ -1,0 +1,23 @@
+<% posts.forEach(function (post, index) {
+if (index % 3 === 0) { %>
+<div class="row">
+    <% } %>
+    <div class="col-md-4 card">
+        <div class="card-body">
+            <!-- <div><%= JSON.stringify(post) %></div> -->
+            <h3>@ <a href="/u/<%= post.user %>"><%= post.user %></a></h3>
+            <p><small><%= post.time %></small></p>
+            <!-- 转换 \r\n 为 br 时，用此方案 -->
+            <!-- <p><%- post.post %></p> -->
+            <!-- 不转换时，用此方案 -->
+            <p style="white-space: pre-wrap;"><%- post.post %></p>
+            <!-- <pre><%- post.post %></pre> -->
+        </div>
+    </div>
+    <% if (index % 3 === 2) { %>
+</div><!-- end row -->
+<% } %>
+<% }) %>
+<% if (posts.length % 3 !== 0) { %>
+</div><!-- end row -->
+<% } %>
