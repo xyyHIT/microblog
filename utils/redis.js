@@ -3,9 +3,9 @@ const settings = require("../settings");
 var redis = require('redis'),
     port = settings.redis.port;
     host = settings.redis.host;
-    opts = {db:1};
+    //opts = {db:1};
 
-var client = redis.createClient(port, host, opts); //port, host, opts
+var client = redis.createClient(port, host); //port, host, opts
 
 if (settings.redis.pwd.length > 0) {
     client.auth(settings.redis.pwd, function() {
